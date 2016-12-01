@@ -51,7 +51,9 @@ class CloudantFeedTests
     val wskprops = WskProps(namespace = "lime@us.ibm.com")
     val wsk = new Wsk
 
-    val myCloudantCreds = CloudantUtil.Credential.makeFromPropertyFile("tests/dat/cloudant.trigger.properties");
+    //val myCloudantCreds = CloudantUtil.Credential.makeFromPropertyFile("tests/dat/cloudant.trigger.properties");
+    val myCloudantCreds = CloudantUtil.Credential.makeFromVCAPFile("cloudantNoSQLDB", this.getClass.getSimpleName)
+    
     val cloudantTriggerDBCreds = new CloudantUtil.Credential(config.dbUsername, config.dbPassword, config.dbPrefix + "cloudanttrigger")
 
     behavior of "Cloudant trigger service"
